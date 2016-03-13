@@ -1,1 +1,1 @@
-angular.module('bill', []);
+angular.module('bill', ['templates']);
