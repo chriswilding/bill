@@ -1,1 +1,70 @@
-<div>This is the bill template</div>
+<div>
+  <h1>Bills and payments</h1>
+  <h2>Latest bill</h2>
+  <section>
+    <header>
+      <h3>Subscriptions</h3>
+      <span>
+        {{ bill.statement.period.from }} - {{ bill.statement.period.to }}
+      </span>
+    </header>
+    <div>
+      <div ng-repeat="subscription in bill.package.subscriptions">
+        <span>{{ subscription.name }}</span>
+        <span>{{ subscription.cost }}</span>
+      </div>
+    </div>
+    <div>
+      <span>Total</span>
+      <span>{{ bill.package.total }}</span>
+    </div>
+  </section>
+  <section>
+    <header>
+      <h3>Call Charges</h3>
+    </header>
+    <div>
+      <div ng-repeat="call in bill.callCharges.calls">
+        <span>{{ call.called }}</span>
+        <span>{{ call.duration }}</span>
+        <span>{{ call.cost }}</span>
+      </div>
+    </div>
+    <div>
+      <span>Total</span>
+      <span>{{ bill.callCharges.total }}</span>
+    </div>
+  </section>
+  <section>
+    <header>
+      <h3>Sky Store</h3>
+    </header>
+    <div>
+      <h4>Rentals</h4>
+      <div ng-repeat="rental in bill.skyStore.rentals">
+        <span>{{ rental.title }}</span>
+        <span>{{ rental.cost }}</span>
+      </div>
+    </div>
+    <div>
+      <h4>Buy and Keep</h4>
+      <div ng-repeat="buyAndKeep in bill.skyStore.buyAndKeep">
+        <span>{{ buyAndKeep.title }}</span>
+        <span>{{ buyAndKeep.cost }}</span>
+      </div>
+    </div>
+    <div>
+      <span>Total</span>
+      <span>{{ bill.skyStore.total }}</span>
+    </div>
+  </section>
+  <section>
+    <header>
+      <span>Total due {{ bill.statement.due }}</span>
+      <span>{{ bill.total }}</span>
+    </header>
+    <div>
+      <span>Bill generated: {{ bill.statement.generated }}</span>
+    </div>
+  </section>
+</div>
