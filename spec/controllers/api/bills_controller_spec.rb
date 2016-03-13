@@ -7,5 +7,15 @@ RSpec.describe Api::BillsController, type: :controller do
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
+
+    it 'calls an external API and returns the JSON response' do
+      uri = URI('http://safe-plains-5453.herokuapp.com/bill.json')
+      expect(Net::HTTP).to receive(:get).with(uri).and_return('{"a":"result"}')
+
+      get :show, id: 1
+
+      expect(response).to be_success
+      expect(response.body).to eq('{"a":"result"}')
+    end
   end
 end
