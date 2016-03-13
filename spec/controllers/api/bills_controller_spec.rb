@@ -10,6 +10,8 @@ RSpec.describe Api::BillsController, type: :controller do
 
     it 'calls an external API and returns the JSON response' do
       uri = URI('http://safe-plains-5453.herokuapp.com/bill.json')
+      # Preventing external service reduces the changes of intermitant failues
+      # and slow tests
       expect(Net::HTTP).to receive(:get).with(uri).and_return('{"a":"result"}')
 
       get :show, id: 1
