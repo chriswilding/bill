@@ -11,12 +11,12 @@
     <div>
       <div ng-repeat="subscription in bill.package.subscriptions">
         <span>{{ subscription.name }}</span>
-        <span>{{ subscription.cost }}</span>
+        <span>{{ subscription.cost | currency:"£" }}</span>
       </div>
     </div>
     <div>
       <span>Total</span>
-      <span>{{ bill.package.total }}</span>
+      <span>{{ bill.package.total | currency:"£" }}</span>
     </div>
   </section>
   <section>
@@ -27,12 +27,12 @@
       <div ng-repeat="call in bill.callCharges.calls">
         <span>{{ call.called }}</span>
         <span>{{ call.duration }}</span>
-        <span>{{ call.cost }}</span>
+        <span>{{ call.cost | currency:"£" }}</span>
       </div>
     </div>
     <div>
       <span>Total</span>
-      <span>{{ bill.callCharges.total }}</span>
+      <span>{{ bill.callCharges.total | currency:"£" }}</span>
     </div>
   </section>
   <section>
@@ -43,25 +43,25 @@
       <h4>Rentals</h4>
       <div ng-repeat="rental in bill.skyStore.rentals">
         <span>{{ rental.title }}</span>
-        <span>{{ rental.cost }}</span>
+        <span>{{ rental.cost | currency:"£" }}</span>
       </div>
     </div>
     <div>
       <h4>Buy and Keep</h4>
       <div ng-repeat="buyAndKeep in bill.skyStore.buyAndKeep">
         <span>{{ buyAndKeep.title }}</span>
-        <span>{{ buyAndKeep.cost }}</span>
+        <span>{{ buyAndKeep.cost | currency:"£" }}</span>
       </div>
     </div>
     <div>
       <span>Total</span>
-      <span>{{ bill.skyStore.total }}</span>
+      <span>{{ bill.skyStore.total | currency:"£" }}</span>
     </div>
   </section>
   <section>
     <header>
       <span>Total due {{ bill.statement.due }}</span>
-      <span>{{ bill.total }}</span>
+      <span>{{ bill.total | currency:"£" }}</span>
     </header>
     <div>
       <span>Bill generated: {{ bill.statement.generated }}</span>
