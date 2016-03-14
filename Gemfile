@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'angular-rails-templates'
+gem 'bootstrap-sass'
 gem 'angularjs-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
