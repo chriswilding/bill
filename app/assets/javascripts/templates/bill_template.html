@@ -4,35 +4,38 @@
   <section>
     <header>
       <h3>Subscriptions</h3>
-      <span>
+      <div class="statement-period">
         {{ bill.statement.period.from | toDate | date:"d MMM yyyy" }} - {{ bill.statement.period.to | toDate | date:"d MMM yyyy" }}
-      </span>
+      </div>
     </header>
     <div>
       <div ng-repeat="subscription in bill.package.subscriptions">
         <span>{{ subscription.name }}</span>
-        <span>{{ subscription.cost | currency:"£" }}</span>
+        <span class="cost">{{ subscription.cost | currency:"£" }}</span>
       </div>
     </div>
-    <div>
-      <span>Total</span>
-      <span>{{ bill.package.total | currency:"£" }}</span>
+    <div class="total">
+      <span>Total {{ bill.package.total | currency:"£" }}</span>
     </div>
   </section>
-  <section>
+  <section id="call_charges">
     <header>
       <h3>Call Charges</h3>
     </header>
     <div>
+      <div class="heading">
+        <span class="number">Number</span>
+        <span class="duration">Duration</span>
+        <span class="cost">Cost</span>
+      </div>
       <div ng-repeat="call in bill.callCharges.calls">
-        <span>{{ call.called }}</span>
-        <span>{{ call.duration }}</span>
-        <span>{{ call.cost | currency:"£" }}</span>
+        <span class="number">{{ call.called }}</span>
+        <span class="duration">{{ call.duration }}</span>
+        <span class="cost">{{ call.cost | currency:"£" }}</span>
       </div>
     </div>
-    <div>
-      <span>Total</span>
-      <span>{{ bill.callCharges.total | currency:"£" }}</span>
+    <div class="total">
+      <span>Total {{ bill.callCharges.total | currency:"£" }}</span>
     </div>
   </section>
   <section>
@@ -43,31 +46,30 @@
       <h4>Rentals</h4>
       <div ng-repeat="rental in bill.skyStore.rentals">
         <span>{{ rental.title }}</span>
-        <span>{{ rental.cost | currency:"£" }}</span>
+        <span class="cost">{{ rental.cost | currency:"£" }}</span>
       </div>
     </div>
     <div>
       <h4>Buy and Keep</h4>
       <div ng-repeat="buyAndKeep in bill.skyStore.buyAndKeep">
         <span>{{ buyAndKeep.title }}</span>
-        <span>{{ buyAndKeep.cost | currency:"£" }}</span>
+        <span class="cost">{{ buyAndKeep.cost | currency:"£" }}</span>
       </div>
     </div>
-    <div>
-      <span>Total</span>
-      <span>{{ bill.skyStore.total | currency:"£" }}</span>
+    <div class="total">
+      <span>Total {{ bill.skyStore.total | currency:"£" }}</span>
     </div>
   </section>
   <section>
-    <header>
+    <header class="bill-total">
       <span>
         Total due {{ bill.statement.due  | toDate | date:"d MMM yyyy" }}
       </span>
-      <span>{{ bill.total | currency:"£" }}</span>
+      <span class="cost">{{ bill.total | currency:"£" }}</span>
     </header>
-    <div>
+    <div class="bill-generated">
       <span>
-        Bill generated: {{ bill.statement.generated | toDate | date:"d MMM yyyy" }}
+        Bill generated {{ bill.statement.generated | toDate | date:"d MMM yyyy" }}
       </span>
     </div>
   </section>
