@@ -5,7 +5,7 @@
     <header>
       <h3>Subscriptions</h3>
       <span>
-        {{ bill.statement.period.from }} - {{ bill.statement.period.to }}
+        {{ bill.statement.period.from | toDate | date:"d MMM yyyy" }} - {{ bill.statement.period.to | toDate | date:"d MMM yyyy" }}
       </span>
     </header>
     <div>
@@ -60,11 +60,15 @@
   </section>
   <section>
     <header>
-      <span>Total due {{ bill.statement.due }}</span>
+      <span>
+        Total due {{ bill.statement.due  | toDate | date:"d MMM yyyy" }}
+      </span>
       <span>{{ bill.total | currency:"£" }}</span>
     </header>
     <div>
-      <span>Bill generated: {{ bill.statement.generated }}</span>
+      <span>
+        Bill generated: {{ bill.statement.generated | toDate | date:"d MMM yyyy" }}
+      </span>
     </div>
   </section>
 </div>
